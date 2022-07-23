@@ -95,10 +95,6 @@ export default {
         .then(async (response) => {
           let res = await response.json();
           this.reviewItems = res;
-          console.log(res);
-          // if(response.status===200){
-          //     this.$router.push("/")
-          // }
         })
         .catch((error) => {
           console.error("Error:", error);

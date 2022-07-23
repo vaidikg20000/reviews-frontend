@@ -81,7 +81,6 @@ export default {
       })
         .then(async (response) => {
             let res = await response.json();
-            console.log(response.status);
             if(response.status===200){
                 this.$router.push("/")
             }
