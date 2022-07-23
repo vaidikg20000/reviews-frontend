@@ -10,6 +10,7 @@
       </div>
 
       <v-spacer></v-spacer>
+      <v-btn v-if="!($route.name === 'New')" @click="redirectNew">+</v-btn>
     </v-app-bar>
 
     <v-main>
@@ -26,5 +27,10 @@ export default {
   data: () => ({
     //
   }),
+  methods:{
+    redirectNew(){
+      this.$router.push("/new");
+    }
+  }
 };
 </script>
