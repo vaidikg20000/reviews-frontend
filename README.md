@@ -1,9 +1,12 @@
 # reviews-frontend
+## Made using Vuejs, PostgreSql, Nodejs ExpressJs.
 
-## Hosted Project online- https://reviews-frontend.netlify.app/
+## Hosted Project online- https://reviews-frontend.vercel.app/
 ### Backend Repository - https://github.com/vaidikg20000/reviews-backend
 
+
 ![image](https://user-images.githubusercontent.com/55653329/180615563-bcea67ea-e9ef-47d4-9a13-eec6b2547b56.png)
+![image](https://user-images.githubusercontent.com/55653329/180617689-8ab5a3c0-1108-42b5-a5e9-f0c3cf68cb13.png)
 ![image](https://user-images.githubusercontent.com/55653329/180613186-0f278929-539f-432b-87ad-58d0942a9ef4.png)
 ![image](https://user-images.githubusercontent.com/55653329/180615633-6570b79a-1546-4515-8920-da94f294f596.png)
 ![image](https://user-images.githubusercontent.com/55653329/180613395-b9a459f4-e800-4e2f-9ca0-868ca94b65bb.png)
