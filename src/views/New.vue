@@ -60,7 +60,7 @@ export default {
       reviewForm: false,
       formRules: {
         titleRules: [(v) => !!v || "Title is required"],
-        contentRules: [(v) => !!v || "Content is required"],
+        contentRules: [(v) => (!!v && v.length <= 200) || 'Content is required and Content must be 200 characters or less'],
       },
     };
   },
