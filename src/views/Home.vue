@@ -2,7 +2,7 @@
   <div class="home">
     <v-data-table
       :headers="headers"
-      :items="reviewItems"
+      :items="itemsIncrement"
       class="elevation-1"
       hide-default-footer
       disable-pagination
@@ -84,6 +84,11 @@ export default {
       },
     };
   },
+  computed: {
+   itemsIncrement() {
+      return this.reviewItems.map((d, index) => ({ ...d, review_id: index + 1 }))
+   }
+},
   methods: {
     async getReviews() {
       fetch("http://localhost:3000/reviews/all", {
