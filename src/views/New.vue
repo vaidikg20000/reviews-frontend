@@ -72,7 +72,7 @@ export default {
       this.$refs.form.reset();
     },
     async saveNewReview() {
-      fetch("http://localhost:3000/reviews/new", {
+      fetch("https://reviews-app-backend.herokuapp.com/reviews/new", {
         method: "POST",
         body: JSON.stringify(this.postBody),
         headers: {

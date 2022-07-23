@@ -76,7 +76,7 @@ export default {
       //     content : this.postBody.content,
       //     id: id
       // }
-      fetch("http://localhost:3000/reviews/" + this.postBody.id, {
+      fetch("https://reviews-app-backend.herokuapp.com/reviews/" + this.postBody.id, {
         method: "PUT",
         body: JSON.stringify(this.postBody),
         headers: {

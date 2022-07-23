@@ -91,7 +91,7 @@ export default {
 },
   methods: {
     async getReviews() {
-      fetch("http://localhost:3000/reviews/all", {
+      fetch("https://reviews-app-backend.herokuapp.com/reviews/all", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -106,7 +106,7 @@ export default {
         });
     },
     deleteReview(id) {
-      fetch("http://localhost:3000/delete/" + id, {
+      fetch("https://reviews-app-backend.herokuapp.com/delete/" + id, {
         method: "DELETE",
         // headers: {
         //   // "Content-Type": "application/json",
