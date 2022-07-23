@@ -1,6 +1,6 @@
 # reviews-frontend
 
-## Hosted Project online- https://reviews-frontend.netlify.app/
+## Hosted Project online- https://reviews-frontend.vercel.app/
 ### Backend Repository - https://github.com/vaidikg20000/reviews-backend
 
 ![image](https://user-images.githubusercontent.com/55653329/180615563-bcea67ea-e9ef-47d4-9a13-eec6b2547b56.png)
