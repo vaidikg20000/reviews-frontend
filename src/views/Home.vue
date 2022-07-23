@@ -142,7 +142,7 @@ export default {
       };
       this.$router.push({
         path: "edit/" + id,
-        query: { id: id, title: title, content: content },
+        params: { id: id, title: title, content: content },
       });
     },
   },

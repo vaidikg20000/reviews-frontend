@@ -43,7 +43,7 @@
         <v-btn color="red" @click="deleteReview()">Delete</v-btn>
       </v-col>
       <v-col md="1"
-        ><v-btn :disabled="!reviewForm" @click="getReview">save</v-btn></v-col
+        ><v-btn :disabled="!reviewForm" @click="updateReview">save</v-btn></v-col
       >
     </v-row>
   </div>
@@ -86,7 +86,7 @@ export default {
         }
       });
     },
-    async getReview() {
+    async updateReview() {
       fetch(
         "https://reviews-app-backend.herokuapp.com/reviews/" + this.postBody.id,
         {
@@ -107,11 +107,32 @@ export default {
           console.error("Error:", error);
         });
     },
+
+    async getReview(id){
+      fetch(
+        "https://reviews-app-backend.herokuapp.com/reviews/" + id,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+        .then(async (response) => {
+          let res = await response.json();
+          if (response.status === 200) {
+            this.postBody.content = res.content;
+            this.postBody.title = res.title;
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
   },
   created() {
-    this.postBody.title = this.$route.query.title;
-    this.postBody.content = this.$route.query.content;
-    this.postBody.id = this.$route.query.id;
+    this.postBody.id = this.$route.params.id
+    this.getReview(this.$route.params.id)
   },
 };
 </script>
