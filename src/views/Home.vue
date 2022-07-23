@@ -73,6 +73,7 @@ export default {
         {
           text: "Actions",
           align: "center",
+          sortable: false,
           value: "actions",
         },
       ],
@@ -86,7 +87,7 @@ export default {
   },
   computed: {
    itemsIncrement() {
-      return this.reviewItems.map((d, index) => ({ ...d, serial_id: index + 1 }))
+      return this.reviewItems.map((d, index) => ({ ...d, created_at: index + 1 }))
    }
 },
   methods: {
