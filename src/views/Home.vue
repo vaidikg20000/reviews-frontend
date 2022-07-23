@@ -20,6 +20,9 @@
       <template v-slot:item.created_at="{ item }">
         {{ moment(item.created_at).format("LLL") }}
       </template>
+      <template v-slot:item.content="{ item }">
+        {{ item.content.length > 25 ? item.content.substring(0,25) + '...' : item.content }}
+      </template>
     </v-data-table>
     <v-snackbar v-model="snackbar.visible" :color="snackbar.color">
       {{ snackbar.errMsg }}
