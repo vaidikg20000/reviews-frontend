@@ -51,9 +51,9 @@ export default {
       moment: moment,
       headers: [
         {
-          text: "Review ID",
+          text: "serial ID",
           align: "center",
-          value: "review_id",
+          value: "serial_id",
         },
         {
           text: "Content",
@@ -86,7 +86,7 @@ export default {
   },
   computed: {
    itemsIncrement() {
-      return this.reviewItems.map((d, index) => ({ ...d, review_id: index + 1 }))
+      return this.reviewItems.map((d, index) => ({ ...d, serial_id: index + 1 }))
    }
 },
   methods: {
