@@ -3,6 +3,8 @@
     <v-data-table
       :headers="headers"
       :items="itemsIncrement"
+      sortBy="created_at"
+      sortDesc=true
       class="elevation-1"
       hide-default-footer
       disable-pagination
@@ -21,7 +23,13 @@
         {{ moment(item.created_at).format("LLL") }}
       </template>
       <template v-slot:item.content="{ item }">
-        {{ item.content.length > 25 ? item.content.substring(0,25) + '...' : item.content }}
+        <!-- {{ item.content.length > 25 ? item.content.substring(0,25) + '...' : item.content }} -->
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on }">
+            <div v-on="on">{{ item.content.length > 25 ? item.content.substring(0,25) + '...' : item.content }}</div>
+          </template>
+          <span>{{ item.content }}</span>
+        </v-tooltip>
       </template>
     </v-data-table>
     <v-snackbar v-model="snackbar.visible" :color="snackbar.color">
@@ -86,10 +94,13 @@ export default {
     };
   },
   computed: {
-   itemsIncrement() {
-      return this.reviewItems.map((d, index) => ({ ...d, created_at: index + 1 }))
-   }
-},
+    itemsIncrement() {
+      return this.reviewItems.map((d, index) => ({
+        ...d,
+        serial_id: index + 1,
+      }));
+    },
+  },
   methods: {
     async getReviews() {
       fetch("https://reviews-app-backend.herokuapp.com/reviews/all", {

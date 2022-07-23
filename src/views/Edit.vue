@@ -7,7 +7,7 @@
     </v-row>
     <v-form v-model="reviewForm" ref="form">
       <v-row>
-        <v-col cols="4">
+        <v-col md="4">
           <v-text-field
             label="Title"
             v-model.trim="postBody.title"
@@ -20,7 +20,7 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="4">
+        <v-col md="4">
           <v-textarea
             class="mx-4"
             :rules="formRules.contentRules"
@@ -33,13 +33,16 @@
       </v-row>
     </v-form>
     <v-row>
-      <v-col cols="1" class="mx-4"
+      <v-col md="1" class="mx-4"
         ><v-btn error @click="redirectBack">Cancel</v-btn></v-col
       >
-      <v-col cols="1">
+      <v-col md="1">
         <v-btn dark @click="resetForm">Reset</v-btn>
       </v-col>
-      <v-col cols="1"
+      <v-col md="1">
+        <v-btn color="red" @click="deleteReview()">Delete</v-btn>
+      </v-col>
+      <v-col md="1"
         ><v-btn :disabled="!reviewForm" @click="getReview">save</v-btn></v-col
       >
     </v-row>
@@ -70,23 +73,34 @@ export default {
     resetForm() {
       this.$refs.form.reset();
     },
+    deleteReview() {
+      fetch(
+        "https://reviews-app-backend.herokuapp.com/delete/" + this.postBody.id,
+        {
+          method: "DELETE",
+        }
+      ).then(async (response) => {
+        let res = await response.json();
+        if (response.status === 200) {
+          this.$router.push("/");
+        }
+      });
+    },
     async getReview() {
-      // const newBody = {
-      //     title : this.postBody.title,
-      //     content : this.postBody.content,
-      //     id: id
-      // }
-      fetch("https://reviews-app-backend.herokuapp.com/reviews/" + this.postBody.id, {
-        method: "PUT",
-        body: JSON.stringify(this.postBody),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      fetch(
+        "https://reviews-app-backend.herokuapp.com/reviews/" + this.postBody.id,
+        {
+          method: "PUT",
+          body: JSON.stringify(this.postBody),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
         .then(async (response) => {
           let res = await response.json();
-          if(response.status === 200){
-                this.$router.push("/");
+          if (response.status === 200) {
+            this.$router.push("/");
           }
         })
         .catch((error) => {
